@@ -38,29 +38,14 @@ class MovieDetailed extends Component {
 
 
     componentDidMount() {
-        axios.get("http://localhost:8080/api/key")
+        axios.get("http://localhost:8080/api/film/" + this.props.match.params.id)
             .then(response => {
-                const myApi = response.data.apiKey;
-                const movieId = this.props.match.params.id;
-                axios.get('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=' + myApi)
-                    .then(response => {
-                        this.setState(
-                            {
-                                movie: response.data
-                            }
-                        );
-                    })
-                    .catch(error => console.warn(error))
-
-                axios.get('https://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' + myApi)
-                    .then(response => {
-                        this.setState(
-                            {
-                                video: response.data.results
-                            }
-                        );
-                    })
-                    .catch(error => console.warn(error))
+                console.log(response);
+                this.setState(
+                    {
+                        movie: response.data
+                    }
+                );
             })
             .catch(error => console.warn(error));
 
@@ -103,30 +88,15 @@ class MovieDetailed extends Component {
             )
         };
 
-        if (this.state.video !== undefined) {
-            const myVideo = this.state.video.filter(video =>
-                video.site === "YouTube"
-            );
-
-
-            if (myVideo.length > 0) {
-                video = () => {
-
-                    const videoUrl = 'https://www.youtube.com/watch?v=' + myVideo[0].key;
-
-                    return (
-
-                        <ReactPlayer url={videoUrl} playing/>
-
-                    )
-                }
-            }
-
-
-        }
-
 
         if (this.state.movie.title !== undefined) {
+            video = () => {
+                const videoUrl = 'https://www.youtube.com/watch?v=' + this.state.movie.videoKey;
+                return (
+                    <ReactPlayer url={videoUrl} playing/>
+                )
+            };
+
             movie = () => {
                 const pict = "https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path;
 
@@ -136,7 +106,7 @@ class MovieDetailed extends Component {
                         <br/>
                         {this.state.movie.overview}
                         <br/>
-                        {this.state.movie.spoken_languages[0].name}
+                        {this.state.movie.language}
                         <br/>
                         {this.state.movie.vote_average}
                         <br/>
@@ -153,10 +123,10 @@ class MovieDetailed extends Component {
             listOfComments = this.state.comments.map(comment =>
                 <div>
 
-                        {comment.comment} ----
+                    {comment.comment} ----
 
 
-                        {comment.commentMaker}
+                    {comment.commentMaker}
 
                 </div>
             )

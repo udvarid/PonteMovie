@@ -1,6 +1,7 @@
 package com.udvarid.pontemovie.controller;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.udvarid.pontemovie.dto.FilmDetails;
 import com.udvarid.pontemovie.dto.FilmListDetails;
 import com.udvarid.pontemovie.service.FilmService;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,5 +55,12 @@ public class FilmController {
         logger.info("Upcoming film list is being prepared");
 
         return new ResponseEntity<>(filmService.getUpcomingList(), HttpStatus.OK);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<FilmDetails> getUniqueMove(@PathVariable("id") Long id) throws UnirestException {
+        logger.info("Detailed movie is being prepared");
+
+        return new ResponseEntity<>(filmService.getUniqueFilm(id), HttpStatus.OK);
     }
 }

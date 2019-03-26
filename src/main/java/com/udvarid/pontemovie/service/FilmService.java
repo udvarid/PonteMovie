@@ -1,5 +1,6 @@
 package com.udvarid.pontemovie.service;
 
+import com.udvarid.pontemovie.dto.FilmDetails;
 import com.udvarid.pontemovie.dto.FilmListDetails;
 import org.springframework.stereotype.Service;
 
@@ -119,4 +120,57 @@ public class FilmService {
     }
 
 
+    public FilmDetails getUniqueFilm(Long id) throws UnirestException {
+        FilmDetails result = new FilmDetails();
+
+        HttpResponse<JsonNode> jsonResponse
+                = Unirest.get("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + apiKey)
+                .header("accept", "application/json")
+                .asJson();
+
+        HttpResponse<JsonNode> jsonResponse2
+                = Unirest.get("https://api.themoviedb.org/3/movie/" + id + "/videos?api_key=" + apiKey)
+                .header("accept", "application/json")
+                .asJson();
+
+
+        String title = jsonResponse.getBody().getObject().get("title").toString();
+        String overview = jsonResponse.getBody().getObject().get("overview").toString();
+        String averageVote = jsonResponse.getBody().getObject().get("vote_average").toString();
+        String posterPath = jsonResponse.getBody().getObject().get("poster_path").toString();
+        String language = jsonResponse.getBody()
+                .getObject()
+                .getJSONArray("spoken_languages")
+                .getJSONObject(0)
+                .get("name").toString();
+
+        String video = "";
+
+        int videoNumber = jsonResponse2.getBody().getObject().getJSONArray("results").length();
+
+        for (int i = 0; i < videoNumber; i++) {
+            if (jsonResponse2.getBody()
+                    .getObject()
+                    .getJSONArray("results")
+                    .getJSONObject(i)
+                    .get("site").equals("YouTube")) {
+                video = jsonResponse2.getBody()
+                        .getObject()
+                        .getJSONArray("results")
+                        .getJSONObject(i)
+                        .get("key").toString();
+                break;
+            }
+
+        }
+
+        result.setLanguage(language);
+        result.setOverview(overview);
+        result.setPoster_path(posterPath);
+        result.setTitle(title);
+        result.setVote_average(averageVote);
+        result.setVideoKey(video);
+
+        return result;
+    }
 }
