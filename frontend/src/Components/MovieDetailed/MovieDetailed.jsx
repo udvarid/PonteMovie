@@ -20,9 +20,9 @@ class MovieDetailed extends Component {
 
         const data = {
             id: 0,
-            movieId : this.props.match.params.id,
-            commentMaker : this.state.name,
-            comment : this.state.comment
+            movieId: this.props.match.params.id,
+            commentMaker: this.state.name,
+            comment: this.state.comment
         };
 
         axios.post("http://localhost:8080/api/comment", data)
@@ -64,7 +64,7 @@ class MovieDetailed extends Component {
             })
             .catch(error => console.warn(error));
 
-        axios.get("http://localhost:8080/api/comment")
+        axios.get("http://localhost:8080/api/comment/" + this.props.match.params.id)
             .then(response => {
                 this.setState(
                     {
@@ -148,12 +148,27 @@ class MovieDetailed extends Component {
 
         }
 
+        if (this.state.comments !== undefined) {
+
+            listOfComments = this.state.comments.map(comment =>
+                <div>
+
+                        {comment.comment} ----
+
+
+                        {comment.commentMaker}
+
+                </div>
+            )
+
+        }
+
         return (
             <div>
                 <h1>Detailed movie</h1>
                 {movie()}
                 {video()}
-                {listOfComments()}
+                {listOfComments}
 
                 <h4>Leave a comment</h4>
                 <br/>

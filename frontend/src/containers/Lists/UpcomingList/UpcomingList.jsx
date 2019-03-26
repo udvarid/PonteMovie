@@ -3,10 +3,10 @@ import axios from 'axios';
 import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
 
 
-class UpcomingList extends Component{
+class UpcomingList extends Component {
 
     state = {
-        movies : []
+        movies: []
     };
 
 
@@ -19,7 +19,7 @@ class UpcomingList extends Component{
                     .then(response => {
                         this.setState(
                             {
-                                movies : response.data.results
+                                movies: response.data.results
                             }
                         );
                     })
@@ -30,13 +30,10 @@ class UpcomingList extends Component{
     }
 
 
-
     render() {
 
         const films = this.state.movies.map(movie => (
-            <Fragment>
-                <MovieListItem movie={movie}/>
-            </Fragment>
+            <MovieListItem movie={movie}/>
         ));
 
         return (
