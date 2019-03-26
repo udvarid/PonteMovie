@@ -10,7 +10,6 @@ function MovieListItem({movie}) {
                 <h6>{movie.title}</h6>
             </Link>
             <p>{movie.vote_average}</p>
-            <p>{movie.overview}</p>
             <p>{movie.release_date}</p>
             <img src={pict} alt="pic" height="200" width="200"/>
 

@@ -3,27 +3,23 @@ import axios from 'axios';
 import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
 
 
-class PopularList extends Component{
+class PopularList extends Component {
 
     state = {
-      movies : []
+        movies: []
     };
 
 
     componentDidMount() {
 
-        axios.get("http://localhost:8080/api/key")
+        axios.get("http://localhost:8080/api/film/popularList")
             .then(response => {
-                const myApi = response.data.apiKey;
-                axios.get('https://api.themoviedb.org/3/movie/popular?api_key=' + myApi)
-                    .then(response => {
-                        this.setState(
-                            {
-                                movies : response.data.results
-                            }
-                        );
-                    })
-                    .catch(error => console.warn(error))
+                console.log(response.data);
+                this.setState(
+                    {
+                        movies: response.data
+                    }
+                );
             })
             .catch(error => console.warn(error));
 
