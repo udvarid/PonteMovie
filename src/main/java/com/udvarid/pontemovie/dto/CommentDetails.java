@@ -1,29 +1,21 @@
-package com.udvarid.pontemovie.domain;
+package com.udvarid.pontemovie.dto;
 
-import com.udvarid.pontemovie.dto.CommentDetails;
+import com.udvarid.pontemovie.domain.Comment;
 
-import javax.persistence.*;
+public class CommentDetails {
 
-@Entity
-public class Comment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long movieId;
-
     private String commentMaker;
-
-    @Column(columnDefinition = "TEXT")
     private String comment;
 
-    public Comment() {}
+    public CommentDetails() {};
 
-    public Comment(CommentDetails commentDetails) {
-        this.movieId = commentDetails.getMovieId();
-        this.commentMaker = commentDetails.getCommentMaker();
-        this.comment = commentDetails.getComment();
+    public CommentDetails(Comment comment) {
+        this.id = comment.getId();
+        this.movieId = comment.getMovieId();
+        this.commentMaker = comment.getCommentMaker();
+        this.comment = comment.getComment();
     }
 
     public Long getId() {
