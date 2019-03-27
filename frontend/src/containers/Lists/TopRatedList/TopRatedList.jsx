@@ -3,10 +3,10 @@ import axios from 'axios';
 import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
 
 
-class TopRatedList extends Component{
+class TopRatedList extends Component {
 
     state = {
-        movies : []
+        movies: []
     };
 
     componentDidMount() {
@@ -25,19 +25,22 @@ class TopRatedList extends Component{
     }
 
 
-
     render() {
 
         const films = this.state.movies.map(movie => (
-            <Fragment>
-                <MovieListItem movie={movie}/>
-            </Fragment>
+            <MovieListItem movie={movie}/>
         ));
 
         return (
-            <div>
-                <h1>This is the top rated list</h1>
-                {films}
+            <div className="movie-list__container">
+                <div className="movie-list-title__container">
+                    <h4>Top rated movies</h4>
+                    <h6>A list about the top rated movies on TMDb.</h6>
+                </div>
+                <div className="movie-list-items__container">
+                    {films}
+                </div>
+
             </div>
         )
     }

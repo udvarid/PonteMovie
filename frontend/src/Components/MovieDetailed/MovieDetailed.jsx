@@ -152,6 +152,7 @@ class MovieDetailed extends Component {
                             onChange={this.inputChangedHandler}
                             placeholder="Your comment"
                             className="form-control"
+                            required={true}
                         />
                     </div>
                     <br/>
@@ -164,6 +165,7 @@ class MovieDetailed extends Component {
                             onChange={this.inputChangedHandler}
                             placeholder="Your name"
                             className="form-control"
+                            required={true}
                         />
                     </div>
                     <br/>

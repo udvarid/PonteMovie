@@ -27,10 +27,14 @@ public class CommentController {
     @PostMapping
     public ResponseEntity createComment(@RequestBody CommentDetails commentDetails) {
 
-        logger.warn("New comment is being added by " + commentDetails.getCommentMaker());
+        if (!commentDetails.getComment().isEmpty() && !commentDetails.getCommentMaker().isEmpty()) {
+            logger.warn("New comment is being added by " + commentDetails.getCommentMaker());
+            commentService.addComment(commentDetails);
+            return new ResponseEntity(HttpStatus.CREATED);
+        }
+        logger.warn("Unsufficient comment information");
+        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
 
-        commentService.addComment(commentDetails);
-        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")

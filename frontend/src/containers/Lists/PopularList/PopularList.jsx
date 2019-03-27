@@ -29,15 +29,20 @@ class PopularList extends Component {
     render() {
 
         const films = this.state.movies.map(movie => (
-            <Fragment>
-                <MovieListItem movie={movie}/>
-            </Fragment>
+            <MovieListItem movie={movie}/>
         ));
 
         return (
-            <div>
-                <h1>This is the popular list</h1>
-                {films}
+            <div className="movie-list__container">
+                <div className="movie-list-title__container">
+                    <h4>Popular movies</h4>
+                    <h6>An updated list of the current popular movies on TMDb.</h6>
+                </div>
+                <div className="movie-list-items__container">
+                    {films}
+                </div>
+
+
             </div>
         )
     }

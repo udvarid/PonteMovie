@@ -3,10 +3,10 @@ import axios from 'axios';
 import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
 
 
-class PlayingList extends Component{
+class PlayingList extends Component {
 
     state = {
-        movies : []
+        movies: []
     };
 
 
@@ -29,15 +29,19 @@ class PlayingList extends Component{
     render() {
 
         const films = this.state.movies.map(movie => (
-            <Fragment>
-                <MovieListItem movie={movie}/>
-            </Fragment>
+            <MovieListItem movie={movie}/>
         ));
 
         return (
-            <div>
-                <h1>This is the now playing list</h1>
-                {films}
+            <div className="movie-list__container">
+                <div className="movie-list-title__container">
+                    <h4>Recent movies</h4>
+                    <h6>A list of movies which can be seen in the theatres.</h6>
+                </div>
+                <div className="movie-list-items__container">
+                    {films}
+                </div>
+
             </div>
         )
     }

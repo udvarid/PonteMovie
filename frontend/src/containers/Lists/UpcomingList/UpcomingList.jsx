@@ -33,9 +33,16 @@ class UpcomingList extends Component {
         ));
 
         return (
-            <div>
-                <h1>This is the upcoming list</h1>
-                {films}
+            <div className="movie-list__container">
+                <div className="movie-list-title__container">
+                    <h4>Upcoming movies</h4>
+                    <h6>A list about the upcoming movies in theatres.</h6>
+                </div>
+                <div className="movie-list-items__container">
+                    {films}
+                </div>
+
+
             </div>
         )
     }
