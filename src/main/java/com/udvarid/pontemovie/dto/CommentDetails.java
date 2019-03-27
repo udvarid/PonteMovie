@@ -9,6 +9,8 @@ public class CommentDetails {
     private String commentMaker;
     private String comment;
 
+    public CommentDetails() {}
+
     public CommentDetails(Comment comment) {
         this.id = comment.getId();
         this.movieId = comment.getMovieId();

@@ -1,3 +1,4 @@
+
 .detailed-movie__container {
     display: inline-block;
     background-color: #e7ddff;
@@ -17,8 +18,50 @@
 }
 
 .detailed-movie__youtube {
-
     width: 50%;
-    height: 300px;
+}
 
+.comment-list__container {
+    display:inline-block;
+    background-color: rgba(181, 185, 255, 0.55);
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgb(166, 166, 166);
+    box-shadow: 2px 4px 12px rgba(72, 117, 105, 0.8);
+
+}
+
+.comment-taker__container {
+    display: inline-block;
+    margin: 50px auto;
+    width: 50%;
+    border: 1px solid rgb(72, 117, 105);
+    padding: 20px 20px;
+    border-radius: 4px;
+    background-color: rgba(181, 185, 255, 0.55);
+    box-shadow: 2px 4px 12px rgba(72, 117, 105, 0.8);
+}
+
+.movie_table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.movie_table td, .movie_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.movie_table tr:nth-child(even){background-color: #f2f2f2;}
+
+.movie_table tr:hover {background-color: #ddd;}
+
+.movie_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4649af;
+    color: white;
 }

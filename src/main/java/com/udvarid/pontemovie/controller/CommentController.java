@@ -27,6 +27,7 @@ public class CommentController {
     @PostMapping
     public ResponseEntity createComment(@RequestBody CommentDetails commentDetails) {
 
+
         if (!commentDetails.getComment().isEmpty() && !commentDetails.getCommentMaker().isEmpty()) {
             logger.warn("New comment is being added by " + commentDetails.getCommentMaker());
             commentService.addComment(commentDetails);

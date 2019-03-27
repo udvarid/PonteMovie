@@ -26,6 +26,7 @@ class MovieDetailed extends Component {
             comment: this.state.comment
         };
 
+
         axios.post("http://localhost:8080/api/comment", data)
             .then((response) => {
                 console.log(response)
@@ -103,7 +104,7 @@ class MovieDetailed extends Component {
 
                 return (
                     <div className="movie-detailed-infos__container2">
-                        <img src={pict} alt="pic" height="350" width="200"/>
+                        <img src={pict} alt="pic" height="275" width="150"/>
 
                         <div>
                             <p><b>{this.state.movie.title}</b></p>
@@ -121,16 +122,11 @@ class MovieDetailed extends Component {
         if (this.state.comments !== undefined) {
 
             listOfComments = this.state.comments.map(comment =>
-                <div key={comment.id}>
-
-                    {comment.comment} ----
-
-
-                    {comment.commentMaker}
-
-                </div>
+                <tr key={comment.id}>
+                    <td>{comment.comment}</td>
+                    <td>{comment.commentMaker}</td>
+                </tr>
             )
-
         }
 
         return (
@@ -139,14 +135,26 @@ class MovieDetailed extends Component {
                     {movie()}
                     {video()}
                 </div>
-
-                {listOfComments}
-
-                <h4>Leave a comment</h4>
                 <br/>
-                <form onSubmit={this.postDataHandler}>
-                    <div>
-                        <label className="control-label">Comment</label>
+
+                <div className="comment-list__container">
+                    <table className="movie_table">
+                        <thead>
+                        <tr>
+                            <th>Comment</th>
+                            <th>Written by</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {listOfComments}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="comment-taker__container">
+                    <b>Leave a comment</b>
+                    <br/>
+                    <form onSubmit={this.postDataHandler}>
                         <input
                             type="text"
                             name="comment"
@@ -156,10 +164,6 @@ class MovieDetailed extends Component {
                             className="form-control"
                             required={true}
                         />
-                    </div>
-                    <br/>
-                    <div>
-                        <label className="control-label">Your name</label>
                         <input
                             type="text"
                             name="name"
@@ -169,10 +173,10 @@ class MovieDetailed extends Component {
                             className="form-control"
                             required={true}
                         />
-                    </div>
-                    <br/>
-                    <button name="submit-comment" type="submit" className="btn btn-secondary">Add comment</button>
-                </form>
+                        <br/>
+                        <button name="submit-comment" type="submit" className="badge badge-success">Add comment</button>
+                    </form>
+                </div>
 
             </div>
 
