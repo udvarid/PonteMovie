@@ -5,8 +5,8 @@ public class FilmDetails {
     private String title;
     private String overview;
     private String language;
-    private String vote_average;
-    private String poster_path;
+    private String voteAverage;
+    private String posterPath;
     private String videoKey;
 
     public String getTitle() {
@@ -33,20 +33,20 @@ public class FilmDetails {
         this.language = language;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public String getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(String vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(String voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
     public String getVideoKey() {

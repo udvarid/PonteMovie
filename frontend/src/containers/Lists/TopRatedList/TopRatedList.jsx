@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
-import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
+import MovieListItem from "../../../components/MovieListItem/MovieListItem";
 
 
 class TopRatedList extends Component {
@@ -13,7 +13,6 @@ class TopRatedList extends Component {
 
         axios.get("http://localhost:8080/api/film/topRatedList")
             .then(response => {
-                console.log(response.data);
                 this.setState(
                     {
                         movies: response.data
@@ -28,7 +27,7 @@ class TopRatedList extends Component {
     render() {
 
         const films = this.state.movies.map(movie => (
-            <MovieListItem movie={movie}/>
+            <MovieListItem key={movie.id} movie={movie}/>
         ));
 
         return (

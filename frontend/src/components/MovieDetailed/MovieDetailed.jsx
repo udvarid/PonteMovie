@@ -40,7 +40,6 @@ class MovieDetailed extends Component {
     componentDidMount() {
         axios.get("http://localhost:8080/api/film/" + this.props.match.params.id)
             .then(response => {
-                console.log(response);
                 this.setState(
                     {
                         movie: response.data
@@ -56,7 +55,6 @@ class MovieDetailed extends Component {
                         comments: response.data
                     }
                 );
-                console.log(response.data);
             })
             .catch(error => console.warn(error))
     }
@@ -98,7 +96,7 @@ class MovieDetailed extends Component {
             };
 
             movie = () => {
-                const pict = "https://image.tmdb.org/t/p/w500" + this.state.movie.poster_path;
+                const pict = "https://image.tmdb.org/t/p/w500" + this.state.movie.posterPath;
 
                 return (
                     <Fragment>
@@ -108,7 +106,7 @@ class MovieDetailed extends Component {
                         <br/>
                         {this.state.movie.language}
                         <br/>
-                        {this.state.movie.vote_average}
+                        {this.state.movie.voteAverage}
                         <br/>
                         <img src={pict} alt="pic" height="200" width="200"/>
 
@@ -121,7 +119,7 @@ class MovieDetailed extends Component {
         if (this.state.comments !== undefined) {
 
             listOfComments = this.state.comments.map(comment =>
-                <div>
+                <div key={comment.id}>
 
                     {comment.comment} ----
 

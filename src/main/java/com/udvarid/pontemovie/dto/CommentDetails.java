@@ -9,13 +9,11 @@ public class CommentDetails {
     private String commentMaker;
     private String comment;
 
-    public CommentDetails() {};
-
     public CommentDetails(Comment comment) {
         this.id = comment.getId();
         this.movieId = comment.getMovieId();
         this.commentMaker = comment.getCommentMaker();
-        this.comment = comment.getComment();
+        this.comment = comment.getCommentContent();
     }
 
     public Long getId() {

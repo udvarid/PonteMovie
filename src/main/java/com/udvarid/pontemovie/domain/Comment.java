@@ -16,14 +16,14 @@ public class Comment {
     private String commentMaker;
 
     @Column(columnDefinition = "TEXT")
-    private String comment;
+    private String commentContent;
 
     public Comment() {}
 
     public Comment(CommentDetails commentDetails) {
         this.movieId = commentDetails.getMovieId();
         this.commentMaker = commentDetails.getCommentMaker();
-        this.comment = commentDetails.getComment();
+        this.commentContent = commentDetails.getComment();
     }
 
     public Long getId() {
@@ -50,11 +50,11 @@ public class Comment {
         this.commentMaker = commentMaker;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCommentContent() {
+        return commentContent;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentContent(String commentContent) {
+        this.commentContent = commentContent;
     }
 }

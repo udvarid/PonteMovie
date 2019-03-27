@@ -3,9 +3,9 @@ package com.udvarid.pontemovie.dto;
 
 public class FilmListDetails {
     private String title;
-    private String release_date;
-    private String vote_average;
-    private String poster_path;
+    private String releaseDate;
+    private String voteAverage;
+    private String posterPath;
     private Long id;
 
     public String getTitle() {
@@ -16,28 +16,28 @@ public class FilmListDetails {
         this.title = title;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public String getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setVote_average(String vote_average) {
-        this.vote_average = vote_average;
+    public void setVoteAverage(String voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
     public Long getId() {

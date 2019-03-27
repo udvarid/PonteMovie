@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
-import MovieListItem from "../../../Components/MovieListItem/MovieListItem";
+import MovieListItem from "../../../components/MovieListItem/MovieListItem";
 
 
 class PlayingList extends Component {
@@ -14,7 +14,6 @@ class PlayingList extends Component {
 
         axios.get("http://localhost:8080/api/film/playingList")
             .then(response => {
-                console.log(response.data);
                 this.setState(
                     {
                         movies: response.data
@@ -29,7 +28,7 @@ class PlayingList extends Component {
     render() {
 
         const films = this.state.movies.map(movie => (
-            <MovieListItem movie={movie}/>
+            <MovieListItem key={movie.id} movie={movie}/>
         ));
 
         return (

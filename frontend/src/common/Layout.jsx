@@ -5,7 +5,7 @@ import PopularList from "../containers/Lists/PopularList/PopularList";
 import PlayingList from "../containers/Lists/PlayingList/PlayingList";
 import TopRatedList from "../containers/Lists/TopRatedList/TopRatedList";
 import UpcomingList from "../containers/Lists/UpcomingList/UpcomingList";
-import MovieDetailed from "../Components/MovieDetailed/MovieDetailed";
+import MovieDetailed from "../components/MovieDetailed/MovieDetailed";
 
 
 function Layout() {
