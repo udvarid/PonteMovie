@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import MovieListItem from "../../../components/MovieListItem/MovieListItem";
-import {sortByAbc, sortByDate, sortByScore} from "../../../common/Sortings.js";
+import {compareByTitle, compareByDate, compareByScore} from "../../../utils/sortings.js";
 
 class PlayingList extends Component {
 
@@ -24,24 +24,24 @@ class PlayingList extends Component {
 
     }
 
-    sortTheMovieByAbc = () => {
+    sortTheMovieByTitle = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(sortByAbc);
+        filteredList.sort(compareByTitle);
         this.setState({movies: filteredList})
     };
 
     sortTheMovieByDate = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(sortByDate);
+        filteredList.sort(compareByDate);
         this.setState({movies: filteredList})
     };
 
     sortTheMovieByScore = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(sortByScore);
+        filteredList.sort(compareByScore);
         this.setState({movies: filteredList})
     };
 
@@ -59,7 +59,7 @@ class PlayingList extends Component {
                     <div className="movie-list-title__container">
                         <h4>Recent movies</h4>
                         <p>A list of movies which can be seen in the theatres.</p>
-                        <button className="badge badge-danger" onClick={this.sortTheMovieByAbc}>abc</button>
+                        <button className="badge badge-danger" onClick={this.sortTheMovieByTitle}>title</button>
                         <button className="badge badge-info" onClick={this.sortTheMovieByDate}>date</button>
                         <button className="badge badge-success" onClick={this.sortTheMovieByScore}>score</button>
                     </div>

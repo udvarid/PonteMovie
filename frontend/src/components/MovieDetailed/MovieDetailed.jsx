@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import ReactPlayer from 'react-player'
+import './MovieDetailed.css';
 
 class MovieDetailed extends Component {
 
@@ -91,7 +92,9 @@ class MovieDetailed extends Component {
             video = () => {
                 const videoUrl = 'https://www.youtube.com/watch?v=' + this.state.movie.videoKey;
                 return (
-                    <ReactPlayer url={videoUrl} playing/>
+                    <div className="detailed-movie__youtube">
+                        <ReactPlayer url={videoUrl} playing/>
+                    </div>
                 )
             };
 
@@ -99,18 +102,17 @@ class MovieDetailed extends Component {
                 const pict = "https://image.tmdb.org/t/p/w500" + this.state.movie.posterPath;
 
                 return (
-                    <Fragment>
-                        {this.state.movie.title}
-                        <br/>
-                        {this.state.movie.overview}
-                        <br/>
-                        {this.state.movie.language}
-                        <br/>
-                        {this.state.movie.voteAverage}
-                        <br/>
-                        <img src={pict} alt="pic" height="200" width="200"/>
+                    <div className="movie-detailed-infos__container2">
+                        <img src={pict} alt="pic" height="350" width="200"/>
 
-                    </Fragment>
+                        <div>
+                            <p><b>{this.state.movie.title}</b></p>
+                            <p>{this.state.movie.overview}</p>
+                            <p><b>Language: </b>{this.state.movie.language}</p>
+                            <p><b>Average score: </b>{this.state.movie.voteAverage}</p>
+                        </div>
+
+                    </div>
                 )
             }
 
@@ -132,10 +134,12 @@ class MovieDetailed extends Component {
         }
 
         return (
-            <div>
-                <h1>Detailed movie</h1>
-                {movie()}
-                {video()}
+            <div className="detailed-movie__container">
+                <div className="movie-detailed-infos__container">
+                    {movie()}
+                    {video()}
+                </div>
+
                 {listOfComments}
 
                 <h4>Leave a comment</h4>

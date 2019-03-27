@@ -1,4 +1,4 @@
-export function sortByAbc(a, b) {
+export function compareByTitle(a, b) {
 
     const titleA = a.title;
     const titleB = b.title;
@@ -11,7 +11,7 @@ export function sortByAbc(a, b) {
 }
 
 
-export function sortByDate(a, b) {
+export function compareByDate(a, b) {
 
     const dateA = a.releaseDate;
     const dateB = b.releaseDate;
@@ -24,7 +24,7 @@ export function sortByDate(a, b) {
 }
 
 
-export function sortByScore(a, b) {
+export function compareByScore(a, b) {
 
     const scoreA = a.voteAverage;
     const scoreB = b.voteAverage;
