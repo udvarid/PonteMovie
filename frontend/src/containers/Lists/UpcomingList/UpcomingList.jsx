@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import MovieListItem from "../../../components/MovieListItem/MovieListItem";
+import {sortByAbc, sortByDate, sortByScore} from "../../../common/Sortings.js";
 
 
 class UpcomingList extends Component {
@@ -24,61 +25,27 @@ class UpcomingList extends Component {
 
     }
 
-    sortByAbc = () => {
-        function compare(a, b) {
-
-            const titleA = a.title;
-            const titleB = b.title;
-
-            if (titleA < titleB)
-                return -1;
-            if (titleA > titleB)
-                return 1;
-            return 0;
-        }
+    sortTheMovieByAbc = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(compare);
+        filteredList.sort(sortByAbc);
         this.setState({movies: filteredList})
     };
 
-    sortByDate = () => {
-        function compare(a, b) {
-
-            const dateA = a.releaseDate;
-            const dateB = b.releaseDate;
-
-            if (dateA < dateB)
-                return 1;
-            if (dateA > dateB)
-                return -1;
-            return 0;
-        }
+    sortTheMovieByDate = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(compare);
+        filteredList.sort(sortByDate);
         this.setState({movies: filteredList})
     };
 
-    sortByScore = () => {
-
-        function compare(a, b) {
-
-            const scoreA = a.voteAverage;
-            const scoreB = b.voteAverage;
-
-            if (scoreA < scoreB)
-                return 1;
-            if (scoreA > scoreB)
-                return -1;
-            return 0;
-        }
+    sortTheMovieByScore = () => {
 
         let filteredList = [...this.state.movies];
-        filteredList.sort(compare);
+        filteredList.sort(sortByScore);
         this.setState({movies: filteredList})
-
     };
+
 
 
     render() {
@@ -93,9 +60,9 @@ class UpcomingList extends Component {
                     <div className="movie-list-title__container">
                         <h4>Upcoming movies</h4>
                         <p>A list about the upcoming movies in theatres.</p>
-                        <button className="badge badge-danger" onClick={this.sortByAbc}>abc</button>
-                        <button className="badge badge-info" onClick={this.sortByDate}>date</button>
-                        <button className="badge badge-success" onClick={this.sortByScore}>score</button>
+                        <button className="badge badge-danger" onClick={this.sortTheMovieByAbc}>abc</button>
+                        <button className="badge badge-info" onClick={this.sortTheMovieByDate}>date</button>
+                        <button className="badge badge-success" onClick={this.sortTheMovieByScore}>score</button>
                     </div>
                 </nav>
 
