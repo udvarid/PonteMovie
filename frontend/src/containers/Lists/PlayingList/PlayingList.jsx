@@ -33,10 +33,13 @@ class PlayingList extends Component {
 
         return (
             <div className="movie-list__container">
-                <div className="movie-list-title__container">
-                    <h4>Recent movies</h4>
-                    <h6>A list of movies which can be seen in the theatres.</h6>
-                </div>
+                <nav id="navbar-fixed" className="navbar-expand-lg sticky-top navbar-dark ">
+                    <div className="movie-list-title__container">
+                        <h4>Recent movies</h4>
+                        <p>A list of movies which can be seen in the theatres.</p>
+                    </div>
+                </nav>
+
                 <div className="movie-list-items__container">
                     {films}
                 </div>

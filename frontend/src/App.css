@@ -11,11 +11,12 @@
 .movie-list-title__container {
   display: inline-block;
   margin: 1px auto;
-  width: 90%;
+  width: 50%;
   padding: 10px 10px;
   border-radius: 20px;
-  background-color: rgba(98, 99, 255, 0.91);
+  background-color: rgba(139, 143, 255, 0.91);
   color: white;
+  font-size: 12px;
 }
 
 .movie-list-items__container {
@@ -45,4 +46,15 @@ a:hover {
   color: #00F
 }
 
+
+#navbar-fixed{
+  top: 0px;
+  width: 60%;
+  position: fixed;
+  height: 80px;
+  margin-left: 50%;
+  margin-top: 60px;
+  padding: 10px 10px;
+  display: block;
+}
 

@@ -32,10 +32,13 @@ class TopRatedList extends Component {
 
         return (
             <div className="movie-list__container">
-                <div className="movie-list-title__container">
-                    <h4>Top rated movies</h4>
-                    <h6>A list about the top rated movies on TMDb.</h6>
-                </div>
+                <nav id="navbar-fixed" className="navbar-expand-lg sticky-top navbar-dark ">
+                    <div className="movie-list-title__container">
+                        <h4>Top rated movies</h4>
+                        <p>A list about the top rated movies on TMDb.</p>
+                    </div>
+                </nav>
+
                 <div className="movie-list-items__container">
                     {films}
                 </div>

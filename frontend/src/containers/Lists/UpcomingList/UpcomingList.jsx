@@ -33,10 +33,16 @@ class UpcomingList extends Component {
 
         return (
             <div className="movie-list__container">
-                <div className="movie-list-title__container">
-                    <h4>Upcoming movies</h4>
-                    <h6>A list about the upcoming movies in theatres.</h6>
-                </div>
+                <nav id="navbar-fixed" className="navbar-expand-lg sticky-top navbar-dark ">
+                    <div className="movie-list-title__container">
+                        <h4>Upcoming movies</h4>
+                        <p>A list about the upcoming movies in theatres.</p>
+                        <button className="badge badge-danger">abc</button>
+                        <button className="badge badge-info">date</button>
+                        <button className="badge badge-success">score</button>
+                    </div>
+                </nav>
+
                 <div className="movie-list-items__container">
                     {films}
                 </div>
