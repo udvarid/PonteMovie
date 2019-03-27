@@ -8,6 +8,24 @@ public class FilmDetails {
     private String voteAverage;
     private String posterPath;
     private String videoKey;
+    private String prodCompanies;
+    private String actors;
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    public String getProdCompanies() {
+        return prodCompanies;
+    }
+
+    public void setProdCompanies(String prodCompanies) {
+        this.prodCompanies = prodCompanies;
+    }
 
     public String getTitle() {
         return title;

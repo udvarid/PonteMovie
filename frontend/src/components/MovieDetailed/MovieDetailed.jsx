@@ -104,13 +104,17 @@ class MovieDetailed extends Component {
 
                 return (
                     <div className="movie-detailed-infos__container2">
-                        <img src={pict} alt="pic" height="275" width="150"/>
+                        <img src={pict} alt="pic" height="300" width="175"/>
 
                         <div>
                             <p><b>{this.state.movie.title}</b></p>
-                            <p>{this.state.movie.overview}</p>
-                            <p><b>Language: </b>{this.state.movie.language}</p>
-                            <p><b>Average score: </b>{this.state.movie.voteAverage}</p>
+                            <div className="movie-detailed-infos__container3">
+                                <p>{this.state.movie.overview}</p>
+                                <p><b>Language: </b>{this.state.movie.language}</p>
+                                <p><b>Average score: </b>{this.state.movie.voteAverage}</p>
+                                <p><b>Production companies: </b>{this.state.movie.prodCompanies}</p>
+                                <p><b>Actors: </b>{this.state.movie.actors}</p>
+                            </div>
                         </div>
 
                     </div>
@@ -123,8 +127,8 @@ class MovieDetailed extends Component {
 
             listOfComments = this.state.comments.map(comment =>
                 <tr key={comment.id}>
-                    <td>{comment.comment}</td>
-                    <td>{comment.commentMaker}</td>
+                    <td width="85%">{comment.comment}</td>
+                    <td width="15%">{comment.commentMaker}</td>
                 </tr>
             )
         }
@@ -141,8 +145,8 @@ class MovieDetailed extends Component {
                     <table className="movie_table">
                         <thead>
                         <tr>
-                            <th>Comment</th>
-                            <th>Written by</th>
+                            <th width="85%">Comment</th>
+                            <th width="15%">Written by</th>
                         </tr>
                         </thead>
                         <tbody>

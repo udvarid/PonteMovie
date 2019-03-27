@@ -107,6 +107,11 @@ public class FilmService {
                 .header("accept", "application/json")
                 .asJson();
 
+        HttpResponse<JsonNode> jsonResponse3
+                = Unirest.get("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=" + API_KEY)
+                .header("accept", "application/json")
+                .asJson();
+
         String title = jsonResponse.getBody().getObject().get("title").toString();
         String overview = jsonResponse.getBody().getObject().get("overview").toString();
         String averageVote = jsonResponse.getBody().getObject().get("vote_average").toString();
@@ -137,12 +142,31 @@ public class FilmService {
 
         }
 
+        String prodCompanies = jsonResponse.getBody().getObject().getJSONArray("production_companies").getJSONObject(0).get("name").toString();
+
+        int prodCompaniesNumber = jsonResponse.getBody().getObject().getJSONArray("production_companies").length();
+        for (int i = 1; i < prodCompaniesNumber; i++) {
+            prodCompanies += ", " + jsonResponse.getBody().getObject().getJSONArray("production_companies").getJSONObject(i).get("name").toString();
+        }
+
+        String actors = jsonResponse3.getBody().getObject().getJSONArray("cast").getJSONObject(0).get("name").toString();
+        int actorNumbers = jsonResponse3.getBody().getObject().getJSONArray("cast").length();
+        for (int i = 1; i < Math.min(actorNumbers, 5); i++) {
+            actors += ", " + jsonResponse3.getBody().getObject().getJSONArray("cast").getJSONObject(i).get("name").toString();
+        }
+
+        if (actorNumbers > 5) {
+            actors += ", ...";
+        }
+
         result.setLanguage(language);
         result.setOverview(overview);
         result.setPosterPath(posterPath);
         result.setTitle(title);
         result.setVoteAverage(averageVote);
         result.setVideoKey(video);
+        result.setProdCompanies(prodCompanies);
+        result.setActors(actors);
 
         return result;
     }
